@@ -1,1 +1,20 @@
-# Google-Developer-Style-Guide
+# Google Developer Style Guide — Extracted & Condensed Reference
+
+A local, reorganized reference derived from the [Google Developer Documentation Style Guide](https://developers.google.com/style).
+
+## Structure
+
+- **[`STYLE_GUIDE.md`](STYLE_GUIDE.md)** — start here. Master index and table of contents linking into the condensed section files.
+- **[`guide/`](guide/)** — condensed, cross-linked section files (one per left-nav section), each combining that section's pages with working internal links.
+- **[`pages/`](pages/)** — one file per original page, organized in a folder structure that mirrors the site's left-hand navigation. This is the raw extraction layer the condensed guide was built from.
+- **`scripts/build_guide.py`** — regenerates `STYLE_GUIDE.md` and `guide/` from the contents of `pages/`.
+
+## Nature of the content
+
+Page content here is paraphrased/condensed in our own words, organized under the same headings and structure as the source, rather than copied verbatim — this is meant as a practical internal reference, not a mirror of the site. For exact original wording, each entry links back to its source page.
+
+The original guide is published by Google. Except as otherwise noted on its pages, its content is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and its code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+
+## Known gaps
+
+- `pages/02-key-resources/word-list.md` reliably covers glossary entries A–P. Automated extraction of the remainder (P–Z) could not be verified as accurate, so it was omitted rather than risk including invented guidance. Check the [live word list](https://developers.google.com/style/word-list) for those entries.
