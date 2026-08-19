@@ -17,4 +17,4 @@ The original guide is published by Google. Except as otherwise noted on its page
 
 ## Known gaps
 
-- `pages/02-key-resources/word-list.md` reliably covers glossary entries A–P. Automated extraction of the remainder (P–Z) could not be verified as accurate, so it was omitted rather than risk including invented guidance. Check the [live word list](https://developers.google.com/style/word-list) for those entries.
+None currently. The word list (`pages/02-key-resources/word-list.md`) covers the full A–Z glossary; entries were parsed directly from the page's HTML rather than through model summarization, to avoid the risk of invented guidance.
