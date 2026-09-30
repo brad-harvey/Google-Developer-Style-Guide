@@ -8,7 +8,17 @@ A local, reorganized reference derived from the [Google Developer Documentation 
 - **[`guide/`](guide/)** — condensed, cross-linked section files (one per left-nav section), each combining that section's pages with working internal links.
 - **[`pages/`](pages/)** — one file per original page, organized in a folder structure that mirrors the site's left-hand navigation. This is the raw extraction layer the condensed guide was built from.
 - **`scripts/build_guide.py`** — regenerates `STYLE_GUIDE.md` and `guide/` from the contents of `pages/`.
-- **[`.claude/skills/google-dev-style/`](.claude/skills/google-dev-style/SKILL.md)** — a Claude Code skill that distills this guide into actionable instructions, so Claude follows Google-style conventions when writing documentation or answering technical questions in this repo.
+- **[`.claude/skills/google-dev-style/`](.claude/skills/google-dev-style/SKILL.md)** — a Claude skill that distills this guide into actionable instructions, so Claude follows Google-style conventions when writing documentation or answering technical questions. `SKILL.md` holds the always-loaded rules; `references/` holds the full guide, loaded on demand.
+- **`scripts/build_skill.py`** — regenerates the skill's `references/` from `guide/` and packages `dist/google-dev-style.skill` for upload to Claude. Run it after `build_guide.py`.
+
+## Rebuilding the skill
+
+```
+uv run scripts/build_guide.py
+uv run scripts/build_skill.py
+```
+
+The second command writes `dist/google-dev-style.skill` (ignored by git, since it's reproducible). Upload that file in Claude's skill settings to replace the installed version.
 
 ## Nature of the content
 

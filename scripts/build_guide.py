@@ -4,7 +4,9 @@ import os
 import re
 import glob
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("GDS_ROOT") or os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
+)
 PAGES_DIR = os.path.join(ROOT, "pages")
 GUIDE_DIR = os.path.join(ROOT, "guide")
 os.makedirs(GUIDE_DIR, exist_ok=True)
@@ -70,12 +72,21 @@ for p in pages:
         url_to_target[src] = (guide_filename, anchor)
         url_to_target[path_only] = (guide_filename, anchor)
 
-def relink(body, current_guide_filename):
+def relink(body, current_guide_filename, current_source=""):
+    current_source_clean = current_source.split("#")[0].rstrip("/")
+
     def repl(match):
         full = match.group(0)
         link_text = match.group(1)
         url = match.group(2)
         url_clean = url.split("#")[0].rstrip("/")
+        # A page linking to its own source URL means the live original, not a
+        # pointer back to itself. Rewriting it would produce a useless anchor.
+        if current_source_clean and url_clean in (
+            current_source_clean,
+            current_source_clean.replace("https://developers.google.com", ""),
+        ):
+            return full
         target = url_to_target.get(url_clean)
         if not target:
             # try with /style prefix normalization
@@ -115,7 +126,7 @@ for section_dir in section_order:
     for p in section_pages:
         title = p["fm"].get("title", "Untitled")
         source = p["fm"].get("source", "")
-        body = relink(p["body"], guide_filename)
+        body = relink(p["body"], guide_filename, source)
         lines.append(f"## {title}")
         lines.append("")
         lines.append(f"*Source: [{source}]({source})*")
