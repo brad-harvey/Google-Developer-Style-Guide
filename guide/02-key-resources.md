@@ -103,7 +103,7 @@ A quick-reference table of when to use each text style.
 
 An alphabetical glossary of specific terms with usage guidance (use / don't use / preferred alternative), condensed to short entries. This is reference data rather than prose, so entries are kept close to the original term + short guidance format.
 
-> **Note on completeness:** This is a condensed version of a long glossary — each entry is trimmed to a short usage note rather than the full original explanation (which often includes examples and cross-references). **For full detail on any entry, check the live [source page](#word-list).**
+> **Note on completeness:** This is a condensed version of a long glossary — each entry is trimmed to a short usage note rather than the full original explanation (which often includes examples and cross-references). **For full detail on any entry, check the live [source page](https://developers.google.com/style/word-list).**
 
 ## Symbols
 - **+** — OK with numbers in running text (e.g., "300+ attributes"), except in formal contexts.
